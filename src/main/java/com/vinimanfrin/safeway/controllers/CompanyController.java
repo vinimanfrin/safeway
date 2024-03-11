@@ -5,6 +5,7 @@ import com.vinimanfrin.safeway.dtos.CompanyInputDTO;
 import com.vinimanfrin.safeway.models.Company;
 import com.vinimanfrin.safeway.services.company.CompanyService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class CompanyController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<CompanyDetailDTO> saveCompany(@RequestBody CompanyInputDTO companyInput){
+    public ResponseEntity<CompanyDetailDTO> saveCompany(@RequestBody @Valid CompanyInputDTO companyInput){
         var company = new Company(companyInput);
         var companySaved = companyService.saveCompany(company);
         var uri = buildImageURL(companySaved);
