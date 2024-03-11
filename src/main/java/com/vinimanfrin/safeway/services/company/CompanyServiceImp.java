@@ -11,7 +11,6 @@ public class CompanyServiceImp implements CompanyService{
     @Autowired
     private CompanyRepository repository;
 
-
     @Override
     public Company saveCompany(Company company) {
         return repository.save(company);
