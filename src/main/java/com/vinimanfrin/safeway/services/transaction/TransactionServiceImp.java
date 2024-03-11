@@ -8,11 +8,14 @@ import com.vinimanfrin.safeway.services.callback.CallBackDTO;
 import com.vinimanfrin.safeway.services.callback.CallBackService;
 import com.vinimanfrin.safeway.services.company.CompanyServiceImp;
 import com.vinimanfrin.safeway.services.customer.CustomerServiceImp;
+import com.vinimanfrin.safeway.services.email.Email;
+import com.vinimanfrin.safeway.services.email.EmailService;
 import com.vinimanfrin.safeway.services.transaction.validation.business.BusinessRulesValidator;
 import com.vinimanfrin.safeway.services.transaction.validation.integrity.IntegrityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class TransactionServiceImp implements TransactionService{
@@ -35,6 +38,9 @@ public class TransactionServiceImp implements TransactionService{
     @Autowired
     private CallBackService callBackService;
 
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public Transaction saveTransaction(TransactionInputDTO transactionInput) {
         integrityValidators.forEach(v -> v.validate(transactionInput));
@@ -50,6 +56,7 @@ public class TransactionServiceImp implements TransactionService{
         transactionRepository.save(transaction);
 
         callBackService.sendCallBack(new CallBackDTO("transação efetuada com sucesso", new TransactionDetailDTO(transaction)));
+        CompletableFuture.runAsync(() -> emailService.sendEmail(new Email(customer.getEmail(), "transação concluída", transaction.getTransactionInfo())));
 
         return transaction;
     }

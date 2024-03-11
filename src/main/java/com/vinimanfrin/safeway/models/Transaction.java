@@ -38,4 +38,12 @@ public class Transaction {
         this.value = transactionInput.value();
         this.dateTime = LocalDateTime.now();
     }
+
+    public String getTransactionInfo() {
+        return " Valor: " + this.value +
+                ", Data: " + this.dateTime +
+                ", Empresa: " + this.company.getFirstName() + this.company.getLastName() +
+                ", Tipo: " + this.type;
+
+    }
 }
