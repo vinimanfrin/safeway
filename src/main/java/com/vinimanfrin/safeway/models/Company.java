@@ -1,6 +1,6 @@
 package com.vinimanfrin.safeway.models;
 
-import com.vinimanfrin.safeway.dtos.CompanyInputDTO;
+import com.vinimanfrin.safeway.dtos.company.CompanyInputDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

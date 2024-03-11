@@ -1,4 +1,4 @@
-package com.vinimanfrin.safeway.dtos;
+package com.vinimanfrin.safeway.dtos.company;
 
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CNPJ;

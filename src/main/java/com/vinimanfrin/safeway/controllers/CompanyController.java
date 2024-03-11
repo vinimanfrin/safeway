@@ -1,16 +1,15 @@
 package com.vinimanfrin.safeway.controllers;
 
-import com.vinimanfrin.safeway.dtos.CompanyDetailDTO;
-import com.vinimanfrin.safeway.dtos.CompanyInputDTO;
+import com.vinimanfrin.safeway.dtos.company.CompanyDetailDTO;
+import com.vinimanfrin.safeway.dtos.company.CompanyInputDTO;
 import com.vinimanfrin.safeway.models.Company;
-import com.vinimanfrin.safeway.services.company.CompanyService;
+import com.vinimanfrin.safeway.services.company.CompanyServiceImp;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 
 @RestController
@@ -18,7 +17,7 @@ import java.net.URI;
 public class CompanyController {
 
     @Autowired
-    CompanyService companyService;
+    private CompanyServiceImp companyService;
 
     @PostMapping
     @Transactional

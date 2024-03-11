@@ -3,7 +3,6 @@ package com.vinimanfrin.safeway.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.vinimanfrin.safeway.dtos;
+package com.vinimanfrin.safeway.dtos.company;
 
 import com.vinimanfrin.safeway.models.Company;
 
