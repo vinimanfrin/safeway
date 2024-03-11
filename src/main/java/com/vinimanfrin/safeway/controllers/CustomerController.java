@@ -22,10 +22,10 @@ public class CustomerController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<CustomerDetailDTO> saveCustomer(@RequestBody @Valid CustomerInputDTO customerInput){
+    public ResponseEntity saveCustomer(@RequestBody @Valid CustomerInputDTO customerInput){
         var customer = new Customer(customerInput);
         var customerSaved = customerService.saveCustomer(customer);
-        var uri = buildImageURL(customerSaved);
+        var uri = buildUrl(customerSaved);
         return ResponseEntity.created(uri).build();
     }
 
@@ -35,7 +35,7 @@ public class CustomerController {
         return ResponseEntity.ok(new CustomerDetailDTO(customer));
     }
 
-    private URI buildImageURL(Customer customer){
+    private URI buildUrl(Customer customer){
         String customerPath = "/"+customer.getId();
         return ServletUriComponentsBuilder
                 .fromCurrentRequestUri()

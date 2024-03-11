@@ -21,10 +21,10 @@ public class CompanyController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<CompanyDetailDTO> saveCompany(@RequestBody @Valid CompanyInputDTO companyInput){
+    public ResponseEntity saveCompany(@RequestBody @Valid CompanyInputDTO companyInput){
         var company = new Company(companyInput);
         var companySaved = companyService.saveCompany(company);
-        var uri = buildImageURL(companySaved);
+        var uri = buildUrl(companySaved);
         return ResponseEntity.created(uri).build();
     }
 
@@ -34,7 +34,7 @@ public class CompanyController {
         return ResponseEntity.ok(new CompanyDetailDTO(company));
     }
 
-    private URI buildImageURL(Company company){
+    private URI buildUrl(Company company){
         String companyPath = "/"+company.getId();
         return ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
