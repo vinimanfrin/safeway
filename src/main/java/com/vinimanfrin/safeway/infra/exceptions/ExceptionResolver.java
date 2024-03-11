@@ -46,4 +46,9 @@ public class ExceptionResolver {
         }
         return ResponseEntity.badRequest().body(new ErrorsData(e.getMessage()));
     }
+
+    @ExceptionHandler(CallBackException.class)
+    public ResponseEntity handleCallBackException(CallBackException e){
+        return ResponseEntity.internalServerError().body(new ErrorsData(e.getMessage()));
+    }
 }
