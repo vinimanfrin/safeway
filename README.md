@@ -137,3 +137,50 @@ realiza uma nova transação no sistema.
 
   
 <br/>
+
+## Configuração da Aplicação
+
+Para rodar a aplicação corretamente, siga os passos abaixo:
+
+1. **Requisitos de Sistema**:
+   - Certifique-se de ter o Java 17 instalado em sua máquina.
+   - Garanta que o PostgreSQL esteja instalado e em execução.
+
+2. **Configurações no arquivo application.properties**:
+   - Abra o arquivo `src/main/resources/application.properties`.
+   - Configure as seguintes propriedades relacionadas ao banco de dados:
+     ```
+     spring.datasource.url=jdbc:postgresql://localhost:5432/nome_do_banco
+     spring.datasource.username=seu_usuario
+     spring.datasource.password=sua_senha
+     spring.jpa.hibernate.ddl-auto=update
+     spring.jpa.show-sql=true
+     spring.jpa.properties.hibernate.format_sql=true
+     ```
+
+3. **Configurações do Webhook**:
+   - Para obter o atributo `webhook.url`, acesse o site [webhook.site](https://webhook.site/).
+   - Copie a propriedade "Your unique URL" e cole-a no campo `webhook.url` do arquivo `application.properties`.
+
+4. **Configurações do E-mail**:
+   - Se quiser receber o email, são necessárias as propriedades do e-mail. Se cadastre o MailTrap e cole suas credenciais :
+      ```
+     spring.mail.host=
+     spring.mail.port=
+     spring.mail.username=
+     spring.mail.password=
+     spring.mail.properties.mail.smtp.auth=true
+     spring.mail.properties.mail.smtp.starttls.enable=true
+     ```
+
+   ![Configurações do E-mail](caminho/para/imagem.png)
+
+5. **Criação do Schema no Banco de Dados**:
+   - Crie um novo schema no seu banco de dados PostgreSQL.
+   - Atualize a propriedade `spring.datasource.url` com a URL correta do seu banco de dados e o nome do schema criado.
+
+6. **Execução da Aplicação**:
+   - Após configurar todas as propriedades necessárias, execute a aplicação.
+   - A aplicação será iniciada em `http://localhost:8080`.
+
+Certifique-se de que todas as configurações estão corretas antes de iniciar a aplicação.
