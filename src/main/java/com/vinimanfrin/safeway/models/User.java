@@ -3,7 +3,6 @@ package com.vinimanfrin.safeway.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.math.BigDecimal;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -20,7 +19,6 @@ public abstract class User {
 
     private String firstName;
     private String lastName;
-    private BigDecimal balance;
     private String password;
 
     public User(String email, String firstName, String lastName, String password) {
@@ -28,7 +26,6 @@ public abstract class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.balance = BigDecimal.ZERO;
         this.password = password;
     }
 }
