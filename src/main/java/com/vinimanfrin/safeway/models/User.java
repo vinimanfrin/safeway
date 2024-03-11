@@ -1,10 +1,15 @@
 package com.vinimanfrin.safeway.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NoArgsConstructor
+@Data
 public abstract class User {
 
     @Id
@@ -19,4 +24,12 @@ public abstract class User {
     private BigDecimal balance;
     private String password;
 
+    public User(String email, String firstName, String lastName, String password) {
+        this.id = null;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.balance = BigDecimal.ZERO;
+        this.password = password;
+    }
 }
