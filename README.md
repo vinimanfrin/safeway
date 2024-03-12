@@ -1,5 +1,7 @@
 # Projeto Java Spring SafeWay - Documentação
 
+A solução proposta no teste para a posição de desenvolvedor Junior inclui a criação de um sistema com dois tipos de usuários (Empresa e Cliente), validação de CPF e CNPJ, implementação de taxas de sistema para as Empresas, controle de saldo, transações entre Clientes e Empresas. Além disso, contempla a funcionalidade de notificações, com um callback enviado para a empresa e notificação por e-mail enviada para o cliente
+
 ## Tecnologias Utilizadas
 
 - Java 17
