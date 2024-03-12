@@ -10,6 +10,7 @@
 - Spring Data JPA
 - JavaMail Sender (para envio de e-mails)
 - Mailtrap (para testar envios de e-mails em ambiente de desenvolvimento)
+- Swagger para auxiliar na documentação
 
 
 ## Endpoints
@@ -49,7 +50,7 @@ Cadastra um novo cliente no sistema
 **observações**
 
 - todos os campos são obrigatórios
-- o cpf informado precisa ser um cpf válido
+- o cpf informado precisa ser um cpf válido, se precisar gere dados válidos aqui [4devs.com](https://www.4devs.com.br)
 - o email informado precisa ser um email válido
 - após a requisição ser concluída , a url para acessar os detalhes do objeto criado estará no cabeçalho Location 
   
@@ -91,7 +92,7 @@ Cadastra uma nova empresa no sistema.
 **observações**
 
 - todos os campos são obrigatórios
-- o cnpj informado precisa ser um cnpj válido
+- o cnpj informado precisa ser um cnpj válido, se precisar gere dados válidos aqui [4devs.com](https://www.4devs.com.br)
 - o email informado precisa ser um email válido
 - após a requisição ser concluída , a url para acessar os detalhes do objeto criado estará no cabeçalho Location
 - o valor mínimo para o campo fee (taxa) é 0.01 (1%) e o valor máximo é 1 (100%)  
@@ -138,6 +139,7 @@ realiza uma nova transação no sistema.
   
 <br/>
 
+
 ## Configuração da Aplicação
 
 Para rodar a aplicação corretamente, siga os passos abaixo:
@@ -145,8 +147,12 @@ Para rodar a aplicação corretamente, siga os passos abaixo:
 1. **Requisitos de Sistema**:
    - Certifique-se de ter o Java 17 instalado em sua máquina.
    - Garanta que o PostgreSQL esteja instalado e em execução.
-
-2. **Configurações no arquivo application.properties**:
+     
+2. **Criação do Schema no Banco de Dados**:
+   - Crie um novo schema no seu banco de dados PostgreSQL.
+   - Atualize a propriedade `spring.datasource.url` com a URL correta do seu banco de dados e o nome do schema criado.
+     
+3. **Configurações no arquivo application.properties**:
    - Abra o arquivo `src/main/resources/application.properties`.
    - Configure as seguintes propriedades relacionadas ao banco de dados:
      ```
@@ -158,11 +164,11 @@ Para rodar a aplicação corretamente, siga os passos abaixo:
      spring.jpa.properties.hibernate.format_sql=true
      ```
 
-3. **Configurações do Webhook**:
+4. **Configurações do Webhook**:
    - Para obter o atributo `webhook.url`, acesse o site [webhook.site](https://webhook.site/).
    - Copie a propriedade "Your unique URL" e cole-a no campo `webhook.url` do arquivo `application.properties`.
 
-4. **Configurações do E-mail**:
+5. **Configurações do E-mail**:
    - Se quiser receber o email, são necessárias as propriedades do e-mail. Se cadastre o MailTrap e cole suas credenciais :
       ```
      spring.mail.host=
@@ -173,14 +179,14 @@ Para rodar a aplicação corretamente, siga os passos abaixo:
      spring.mail.properties.mail.smtp.starttls.enable=true
      ```
 
-   ![Configurações do E-mail](caminho/para/imagem.png)
-
-5. **Criação do Schema no Banco de Dados**:
-   - Crie um novo schema no seu banco de dados PostgreSQL.
-   - Atualize a propriedade `spring.datasource.url` com a URL correta do seu banco de dados e o nome do schema criado.
-
 6. **Execução da Aplicação**:
    - Após configurar todas as propriedades necessárias, execute a aplicação.
    - A aplicação será iniciada em `http://localhost:8080`.
 
-Certifique-se de que todas as configurações estão corretas antes de iniciar a aplicação.
+<br/>
+
+## Mais detalhes
+
+após iniciar o projeto , consulte /swagger-ui/index.html para informações mais detalhadas dos endpoints
+
+<br/>
