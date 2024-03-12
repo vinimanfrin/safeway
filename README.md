@@ -187,6 +187,6 @@ Para rodar a aplicação corretamente, siga os passos abaixo:
 
 ## Mais detalhes
 
-após iniciar o projeto , consulte /swagger-ui/index.html para informações mais detalhadas dos endpoints
+após iniciar o projeto , consulte `/swagger-ui/index.html` para informações mais detalhadas dos endpoints
 
 <br/>
